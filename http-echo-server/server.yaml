@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-echo-server
+spec:
+  selector:
+    matchLabels:
+      app: http-echo-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: http-echo-server
+    spec:
+      containers:
+      - name: http-echo-server
+        image: "mendhak/http-https-echo:17"
+        ports:
+        - name: server
+          containerPort: 8080
+          protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: http-echo-server
+spec:
+  # type: LoadBalancer
+  selector:
+    app: http-echo-server
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  - name: https
+    port: 8443
+    protocol: TCP
+    targetPort: 8443
