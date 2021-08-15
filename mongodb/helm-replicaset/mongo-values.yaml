@@ -1,0 +1,8 @@
+architecture: replicaset
+useStatefulSet: true
+
+auth:
+  rootPassword: "root123"
+  username: "ali123"
+  password: "ali123"
+  database: "test-db"
