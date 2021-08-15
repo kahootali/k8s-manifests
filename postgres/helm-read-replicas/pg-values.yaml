@@ -1,0 +1,14 @@
+global:
+  postgresql:
+    postgresqlUsername: ali123
+    postgresqlPassword: ali123
+    postgresqlDatabase: test-db
+
+postgresqlPostgresPassword: admin123
+
+replication:
+  enabled: true
+  synchronousCommit: "remote_write"
+  readReplicas: 1
+  numSynchronousReplicas: 1
+
