@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jmeter
+spec:
+  selector:
+    matchLabels:
+      app: jmeter
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: jmeter
+    spec:
+      containers:
+      - name: jmeter
+        image: "vmarrazzo/jmeter"
+        command: ["sleep","36000"]
