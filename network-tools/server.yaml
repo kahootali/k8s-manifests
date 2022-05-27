@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: network-tools
+spec:
+  selector:
+    matchLabels:
+      app: network-tools
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: network-tools
+    spec:
+      containers:
+      - name: network-tools
+        image: "praqma/network-multitool"
+        ports:
+        - name: server
+          containerPort: 80
+          protocol: TCP
+---
