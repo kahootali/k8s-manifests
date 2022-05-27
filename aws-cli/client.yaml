@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws-cli
+spec:
+  selector:
+    matchLabels:
+      app: aws-cli
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: aws-cli
+    spec:
+      containers:
+      - name: aws-cli
+        image: "amazon/aws-cli"
+        command: ["sleep","36000"]
+      serviceAccountName: aws-cli
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    eks.amazonaws.com/role-arn: "arn:aws:iam::ACCOUNT_ID:role/ROLE_NAME"
+  name: aws-cli
